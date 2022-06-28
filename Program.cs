@@ -9,15 +9,27 @@
         string textoUsuario = Console.ReadLine();
         int numeroDePalabras = ContadorDePalabras(textoUsuario);
         int numeroDePalabras1= ContadorDePalabrasConArray(textoUsuario);
+        int numeroDePalabrasQueEmpiezanConVocal = ContadorDePalabrasQueComienzanConVocal(textoUsuario); 
 
         Console.WriteLine("");
         Console.WriteLine("Total de palabras en el texto: {0}", numeroDePalabras);
         Console.WriteLine("");
         Console.WriteLine("Total de palabras en el texto con ARRAY: {0}", numeroDePalabras1);
         Console.WriteLine("");
-        Console.WriteLine("Palabras en el texto que son pares: ");
+        Console.WriteLine("Palabras en el texto que estan en una posición par:");
+        Console.WriteLine("");
 
         SeleccionadorDePalabrasPares(textoUsuario);
+
+        Console.WriteLine("");
+        Console.WriteLine("Total de palabras en el texto que empiezan con una vocal: {0}", numeroDePalabrasQueEmpiezanConVocal);
+        Console.WriteLine("");
+        Console.WriteLine("Palabras en el texto que empiezan con una vocal");
+        Console.WriteLine("");
+
+        SeleccionadorDePalabrasQueComienzanConVocal(textoUsuario);
+
+        Console.ReadKey();
     }
 
     static int ContadorDePalabras(string textoUsuario)
@@ -57,6 +69,43 @@
                 string palabras = arreglo[i];
                
                 Console.WriteLine(palabras);
+            }
+        }
+    }
+
+    static int ContadorDePalabrasQueComienzanConVocal(string textoUsuario)
+    {
+        string[] arreglo = textoUsuario.Split();
+        int contador = 0;
+        
+        foreach (var item in arreglo)
+        {
+            if(item.StartsWith("a") == true || item.StartsWith("e") == true || item.StartsWith("i") == true || item.StartsWith("o") == true || item.StartsWith("u") == true ||
+               item.StartsWith("A") == true || item.StartsWith("E") == true || item.StartsWith("I") == true || item.StartsWith("O") == true || item.StartsWith("U") == true)
+            {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    static void SeleccionadorDePalabrasQueComienzanConVocal(string textoUsuario)
+    {
+        string[] arreglo = textoUsuario.Split();
+        int contador = 0;
+
+        foreach (var item in arreglo)
+        {
+            if (item.StartsWith("a") == true || item.StartsWith("e") == true || item.StartsWith("i") == true || item.StartsWith("o") == true || item.StartsWith("u") == true ||
+                item.StartsWith("A") == true || item.StartsWith("E") == true || item.StartsWith("I") == true || item.StartsWith("O") == true || item.StartsWith("U") == true)
+            {
+                string palabras = arreglo[contador];
+                Console.WriteLine(palabras);
+                contador++;
+            }
+            else
+            {
+                contador++;
             }
         }
     }
